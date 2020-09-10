@@ -1,0 +1,20 @@
+
+spring:
+  application:
+    name: app-front-interface-server
+  profiles: 
+    active: local
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: erp-config
+#      fail-fast: true
+#      username: root
+#      password: admin123!
+#      profile: jzyc
+  zipkin:
+    base-url: http://127.0.0.1:9411
+  sleuth:
+    sampler:
+      percentage: 1.0

@@ -1,0 +1,7 @@
+CREATE TABLE TEST
+(
+  ID    VARCHAR2(32 CHAR)                       NOT NULL,
+  NAME  VARCHAR2(200 BYTE)
+)
+
+

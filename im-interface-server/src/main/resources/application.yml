@@ -1,0 +1,56 @@
+server:
+  port: 5051
+  ip: 127.0.0.1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:admin123!@localhost:6761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}(${server.ip}):${server.port}
+    appname: app-front-interface-server
+
+spring:
+  jackson:
+    time-zone: Asia/Shanghai
+  profiles: local
+  redis:
+    host: 192.168.85.47
+    password: passwd123
+    port: 6379
+    timeout: 120000
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 50
+        max-wait: 50
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout:  600000
+  ConnectTimeout:  600000
+  eager-load:
+    enabled: true
+    clients: app-user-server,app-activity-server,app-order-server,app-policy-server,app-product-server
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 60000
+
+swagger:
+  auth:
+    server: http://127.0.0.1:6767/uaa/oauth/token?grant_type=password
+security:
+  oauth2:
+    resource:
+      id: resource-app-front-interface-server
+      user-info-uri: http://localhost:6161/me
+      prefer-token-info: false

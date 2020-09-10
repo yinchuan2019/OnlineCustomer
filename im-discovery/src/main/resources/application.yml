@@ -1,0 +1,18 @@
+server:
+  port: 6761
+  
+spring:
+  jackson:
+    time-zone: Asia/Shanghai
+  profiles: local
+  
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+

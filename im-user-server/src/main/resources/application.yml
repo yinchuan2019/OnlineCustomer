@@ -1,0 +1,110 @@
+server:
+  port: 6161
+  ip: 127.0.0.1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:admin123!@localhost:6761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}(${server.ip}):${server.port}
+    appname: app-user-server
+
+security:
+  oauth2:
+    resource:
+      id: resource-user
+      user-info-uri: http://localhost:6161/me
+      prefer-token-info: false
+
+
+spring:
+  jackson:
+    time-zone: Asia/Shanghai
+  profiles: local
+  thymeleaf:
+    mode: LEGACYHTML5
+  datasource:
+    master:
+      url: jdbc:oracle:thin:@127.0.0.1:1521:xe
+      username: m_user
+      password: 123456
+      driver-class-name: oracle.jdbc.OracleDriver
+      type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat,wall,slf4j
+      max-active: 100
+      initial-size: 10
+      min-idle: 10
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+    slaver:
+      url: jdbc:oracle:thin:@127.0.0.1:1521:xe
+      username: m_user
+      password: 123456
+      driver-class-name: oracle.jdbc.OracleDriver
+      type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat,wall,slf4j
+      max-active: 100
+      initial-size: 10
+      min-idle: 10
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+  redis:
+    host: 192.168.85.47
+    password: passwd123
+    port: 6379
+    timeout: 120000
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 50
+        max-wait: 50
+
+logging:
+  level:
+    com.app.user.dao: debug
+
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout:  60000
+  ConnectTimeout:  60000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 60000
+
+sms-tencent-app-key: 2dd6111f4dfcf96cfafb7495bae39a75
+sms-tencent-sdk-appid: 1400057664
+sms-tencent-url: https://yun.tim.qq.com/v5/tlssmssvr/sendsms
+
+deptment-secretary-id: BFPID000000OJT000R
+default-company-id: _DefaultCompanyOId
+
+swagger:
+  auth:
+    server: http://127.0.0.1:6767/uaa/oauth/token?grant_type=password
+# 图片服务器地址
+picServerUrl :  http://192.168.85.47:9999/

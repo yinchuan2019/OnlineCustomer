@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pactera</groupId>
+		<artifactId>im</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	
+	<artifactId>im-discovery</artifactId>
+	<packaging>jar</packaging>
+	<name>im-discovery</name>
+	<description>Im Discovery</description>
+
+
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+	  	<!-- <maven.build.timestamp.format>MMdd</maven.build.timestamp.format>  --> 
+    </properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
+		<dependency>  
+    		<groupId>org.springframework.boot</groupId>  
+    		<artifactId>spring-boot-starter-security</artifactId>  
+		</dependency>
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+            <!-- 使用Jetty，需要在spring-boot-starter-web排除spring-boot-starter-tomcat，因为SpringBoot默认使用tomcat --> 
+            <exclusions>  
+                <exclusion>  
+                    <groupId>org.springframework.boot</groupId>  
+                    <artifactId>spring-boot-starter-tomcat</artifactId>  
+                </exclusion>  
+            </exclusions>  
+		</dependency>
+        <dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-starter-jetty</artifactId>  
+        </dependency> 
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+	        <!-- <plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>build-helper-maven-plugin</artifactId>
+	            <version>1.9.1</version>
+	            <executions>
+	                <execution>
+	                    <id>timestamp-property</id>
+	                    <goals>
+	                        <goal>timestamp-property</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	            <configuration>
+	                <name>current.time</name>
+	                <pattern>MMdd</pattern>
+	                <timeZone>GMT+8</timeZone>
+	            </configuration>
+	        </plugin> -->
+		</plugins>
+  		<finalName>${project.artifactId}-${project.version}</finalName>  
+	</build>
+</project>

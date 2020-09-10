@@ -1,0 +1,28 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('pull code') {
+         steps {
+             dir('ansuranceApp'){
+                checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '', excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '', locations: [[cancelProcessOnExternalsFail: true, credentialsId: 'subversion_secret', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: 'https://192.168.3.20/svn/ansuranceApp/trunk/ansuranceApp']], quietOperation: true, workspaceUpdater: [$class: 'UpdateWithRevertUpdater']])
+                }
+         }
+
+      }
+
+      stage('build project') {
+         steps {
+             dir('ansuranceApp'){
+                 sh"mvn clean package -U -am -pl app-discovery -Dmaven.test.skip=true -gs /usr/share/maven/conf/settings.xml"
+                }
+         }
+      }
+      stage('publish project') {
+         steps {
+
+         }
+      }
+   }
+
+}

@@ -1,0 +1,78 @@
+
+
+
+
+
+
+
+pipeline {
+  agent {
+    node {
+      label 'maven'
+    }
+
+  }
+
+  parameters {
+        string(name:'TAG_NAME',defaultValue: 'dev',description:'分支')
+    }
+environment {
+    GITLAB_ID = 'gitlab'
+    KUBECONFIG_CREDENTIAL_ID = 'lan-kubeconfig'
+    REGISTRY = '10.2.1.5'
+    HARBOR_NAMESPACE = 'public'
+    HARBOR_CREDENTIAL_ID = 'harborid'
+    HARBORNAME = 'harbor-loca'
+    APP_NAME = 'dxz-m-dashboard'
+    NAMESPACE = 'lan-ops'
+    ACTIVE = 'lan'
+    DEVOPS_PATH = 'deploy/sb/lanx/devops.yaml'
+    COMMAND_PATH = '/usr/share/deploy/dashboard-service/bin/dashboard-service'
+    __WORKSPACE = "${env.WORKSPACE}"
+  }
+
+
+  stages {
+
+
+      stage('拉取代码：dxz-m-dashboard') {
+        steps {
+            dir('dxz-lan-ops') {
+                checkout([$class: 'SubversionSCM', additionalCredentials: [[credentialsId: 'svn', realm: '']],
+                 filterChangelog: false, ignoreDirPropChanges: false,
+                 locations:
+                  [[cancelProcessOnExternalsFail: true, credentialsId: 'svn', depthOption: 'infinity',
+                  ignoreExternalsOption: true, local: '.',
+                   remote: 'https://192.168.3.20/svn/ansuranceApp/trunk/ansuranceApp/app-user-server']],
+                   quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']])
+            }
+        }
+      }
+
+       stage('编译代码：dxz-m-dashboard') {
+           steps {
+               container ('maven') {
+                   dir('dxz-lan-ops') {
+                       sh"mvn clean package -U -am -pl dxz-m-dashboard  -P lan -Dmaven.test.skip=true -gs $__WORKSPACE/config/mvn/settings.xml"
+                       sh "cp ./dxz-m-dashboard/target/dashboard-service.tar.gz $__WORKSPACE/docker/sb/lanx/"
+                   }
+                   withCredentials([usernamePassword(passwordVariable : 'DOCKER_PASSWORD' ,usernameVariable : 'DOCKER_USERNAME' ,credentialsId : "$HARBOR_CREDENTIAL_ID" ,)]) {
+                       sh 'echo "$DOCKER_PASSWORD" | docker login $REGISTRY -u "$DOCKER_USERNAME" --password-stdin'
+                       sh "cd docker/sb/lanx/ && docker build --build-arg JAR_FILE=dashboard-service.tar.gz --build-arg SERVICE_FILE=dashboard-service -t $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:lan.1.0.$BUILD_NUMBER ."
+                       sh 'docker push  $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:lan.1.0.$BUILD_NUMBER'
+                   }
+                   echo '编译代码成功'
+               }
+           }
+       }
+
+
+    stage('部署：dxz-m-dashboard') {
+          steps {
+                kubernetesDeploy(configs: "$DEVOPS_PATH", enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
+                echo '部署成功'
+          }
+        }
+  }
+
+}
