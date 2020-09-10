@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="im-product-server" />
+        <module name="im-gateway" />
+        <module name="im-interface-server" />
+        <module name="im-websocket-server" />
+        <module name="im-discovery" />
+        <module name="im-user-server" />
+        <module name="im-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="im-core" target="1.5" />
+      <module name="im-discovery" target="1.5" />
+      <module name="im-gateway" target="1.8" />
+      <module name="im-interface-server" target="1.8" />
+      <module name="im-product-server" target="1.8" />
+      <module name="im-user-server" target="1.8" />
+      <module name="im-websocket-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
