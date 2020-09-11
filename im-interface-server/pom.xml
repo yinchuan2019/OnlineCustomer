@@ -22,17 +22,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version><!--$NO-MVN-MAN-VER$-->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fj.app</groupId>
-			<artifactId>app-core</artifactId>
-			<version>1.0.0</version><!--$NO-MVN-MAN-VER$-->
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
@@ -48,14 +37,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId> 
 		</dependency> -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
@@ -98,17 +79,18 @@
             <groupId>com.netflix.feign</groupId>
             <artifactId>feign-httpclient</artifactId>
             <version>8.18.0</version>
-        </dependency> -->
+        </dependency>
         <dependency>
 		    <groupId>io.github.openfeign</groupId>
 		    <artifactId>feign-httpclient</artifactId>
-		    <version>10.1.0</version><!--$NO-MVN-MAN-VER$-->
+		    <version>10.1.0</version>
 		</dependency>
         <dependency>
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>fastjson</artifactId>
 		    <version>1.2.62</version>
 		</dependency>
+		-->
 		        
         <!--  redis -->
 		<dependency>
@@ -134,12 +116,6 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
-		</dependency>
-		<!-- 阿里云 短信接口 -->
-		<dependency>
-		    <groupId>com.aliyun</groupId>
-		    <artifactId>aliyun-java-sdk-core</artifactId>
-		    <version>4.0.3</version>
 		</dependency>
 
 		<dependency>

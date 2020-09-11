@@ -36,12 +36,21 @@
 		<lombok.version>1.18.4</lombok.version>
 		<spring-security-oauth.version>2.3.3.RELEASE</spring-security-oauth.version>
 		<baomidou.version>3.2.0</baomidou.version>
+		<hutool.version>5.0.0</hutool.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
+			<groupId>com.pactera</groupId>
+			<artifactId>im-core</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,9 +82,11 @@
 	            <artifactId>im-core</artifactId>
 	            <version>1.0.0</version>
 	        </dependency>
+			<!-- hutool工具类 -->
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.alibaba</groupId>
