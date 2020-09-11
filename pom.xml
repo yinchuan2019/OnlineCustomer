@@ -39,14 +39,14 @@
 		<lombok.version>1.18.4</lombok.version>
 		<spring-security-oauth.version>2.3.3.RELEASE</spring-security-oauth.version>
 		<baomidou.version>3.2.0</baomidou.version>
-		<hutool.version>5.0.0</hutool.version>
+		<hutool.version>5.3.9</hutool.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.pactera</groupId>
 			<artifactId>im-core</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -60,9 +60,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 		</dependency>
 	</dependencies>
 
