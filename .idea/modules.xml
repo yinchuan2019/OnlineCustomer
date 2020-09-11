@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/im.iml" filepath="$PROJECT_DIR$/im.iml" />
       <module fileurl="file://$PROJECT_DIR$/im-core/im-core.iml" filepath="$PROJECT_DIR$/im-core/im-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/im-discovery/im-discovery.iml" filepath="$PROJECT_DIR$/im-discovery/im-discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/im-gateway/im-gateway.iml" filepath="$PROJECT_DIR$/im-gateway/im-gateway.iml" />
@@ -9,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/im-product-server/im-product-server.iml" filepath="$PROJECT_DIR$/im-product-server/im-product-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/im-user-server/im-user-server.iml" filepath="$PROJECT_DIR$/im-user-server/im-user-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/im-websocket-server/im-websocket-server.iml" filepath="$PROJECT_DIR$/im-websocket-server/im-websocket-server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/onlineCustomer.iml" filepath="$PROJECT_DIR$/.idea/onlineCustomer.iml" />
     </modules>
   </component>
 </project>

@@ -17,6 +17,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="im" target="1.5" />
       <module name="im-core" target="1.5" />
       <module name="im-discovery" target="1.5" />
       <module name="im-gateway" target="1.8" />

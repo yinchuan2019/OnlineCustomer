@@ -1,15 +1,7 @@
 server:
-  port: 6091
+  port: 8002
   ip: 127.0.0.1
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://root:admin123!@localhost:6761/eureka/
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}(${server.ip}):${server.port}
-    appname: app-order-server
 
 security:
   oauth2:
@@ -66,29 +58,7 @@ spring:
       test-on-return: false
       pool-prepared-statements: true
       max-open-prepared-statements: 20
-#    slaver:
-#      url: jdbc:oracle:thin:@192.168.85.47:1521:xe
-#      username: s_order
-#      password: 123456
-#      driver-class-name: oracle.jdbc.OracleDriver
-#      type: com.alibaba.druid.pool.DruidDataSource
-#      filters: stat,wall,slf4j
-#      max-active: 100
-#      initial-size: 10
-#      min-idle: 10
-#      max-wait: 60000
-#      time-between-eviction-runs-millis: 60000
-#      min-evictable-idle-time-millis: 300000
-#      validation-query: select 1 from dual
-#      test-while-idle: true
-#      test-on-borrow: false
-#      test-on-return: false
-#      pool-prepared-statements: true
-#      max-open-prepared-statements: 20
 
-#mybatis:
-#  mapper-locations: classpath:mapper/**/*Mapper.xml
-#  type-aliases-package: com.app.news.model
 logging:
   level:
     com.app.order.dao: debug
@@ -119,35 +89,3 @@ hystrix:
           strategy: SEMAPHORE
           thread:
             timeoutInMilliseconds: 60000
-demo: demo
-#  demo direct类型
-demoDirectExchange: directExchange
-demoDirectQueue: queue
-demoDirectRoutingKey: a
-#  demo topic类型
-demoTopicExchange: topicExchage
-demoTopicQueueA: queue1
-demoTopicQueueB: queue2
-demoTopicRoutingKeyA: topic.message
-demoTopicRoutingKeyB: topic.#
-
-
-order:
-  orderLoseTime: 15
-  changeOrderStatusScheduleTimeout: 540000
-  inter:
-   hbTradeCode: HCSContConfirm
-   userCode: admin
-   password: 1234@abcd
-   companyFlag: HIS
-   manageCom: 9040101
-   operator: Auto0001
-   sellType: 13
-   saleChnl: 1
-   businessChnl: 06
-   getPolMode: 2
-   bizSource: 5
-   contSource: 135
-   contSourceName: 保险APP
-   agentCode: E04000001
-   recommenderNo: E04000001

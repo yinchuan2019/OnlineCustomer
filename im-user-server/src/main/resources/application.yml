@@ -1,15 +1,6 @@
 server:
-  port: 6161
+  port: 8001
   ip: 127.0.0.1
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://root:admin123!@localhost:6761/eureka/
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}(${server.ip}):${server.port}
-    appname: app-user-server
 
 security:
   oauth2:
@@ -27,25 +18,6 @@ spring:
     mode: LEGACYHTML5
   datasource:
     master:
-      url: jdbc:oracle:thin:@127.0.0.1:1521:xe
-      username: m_user
-      password: 123456
-      driver-class-name: oracle.jdbc.OracleDriver
-      type: com.alibaba.druid.pool.DruidDataSource
-      filters: stat,wall,slf4j
-      max-active: 100
-      initial-size: 10
-      min-idle: 10
-      max-wait: 60000
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      validation-query: select 1 from dual
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-      pool-prepared-statements: true
-      max-open-prepared-statements: 20
-    slaver:
       url: jdbc:oracle:thin:@127.0.0.1:1521:xe
       username: m_user
       password: 123456
@@ -96,12 +68,6 @@ hystrix:
           thread:
             timeoutInMilliseconds: 60000
 
-sms-tencent-app-key: 2dd6111f4dfcf96cfafb7495bae39a75
-sms-tencent-sdk-appid: 1400057664
-sms-tencent-url: https://yun.tim.qq.com/v5/tlssmssvr/sendsms
-
-deptment-secretary-id: BFPID000000OJT000R
-default-company-id: _DefaultCompanyOId
 
 swagger:
   auth:
