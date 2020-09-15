@@ -1,4 +1,3 @@
-
 spring:
   application:
     name: im-websocket-server
@@ -9,9 +8,3 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
-#新版配置，否则后面dashboard无法找到hystrix.stream     
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'

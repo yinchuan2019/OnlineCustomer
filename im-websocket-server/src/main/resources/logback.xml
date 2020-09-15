@@ -8,9 +8,9 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/logs/app-order/order-server-log.log</file>
+        <file>/var/logs/im-websocket/websocket-server-log.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/logs/app-order/order-server-log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>/logs/im-websocket/websocket-server-log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder" charset="utf-8">
@@ -22,9 +22,9 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-        <File>/var/logs/app-order/order-server-error.log</File>
+        <File>/var/logs/im-websocket/websocket-server-error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/logs/app-order/order-server-error-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <fileNamePattern>/logs/im-websocket/websocket-server-error-%d{yyyyMMdd}.log.%i</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>500MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
