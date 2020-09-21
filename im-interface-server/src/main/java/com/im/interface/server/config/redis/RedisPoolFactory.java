@@ -1,5 +1,6 @@
 package com.app.interfaces.server.config.redis;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
@@ -7,8 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-
-import com.app.core.util.StringUtils;
 
 @Configuration
 public class RedisPoolFactory {

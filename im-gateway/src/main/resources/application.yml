@@ -10,16 +10,16 @@ spring:
         server-addr: 127.0.0.1:8848 # nacos服务器地址
     gateway:
        routes:
-        - id: user #路由ID，全局唯一
+        - id: im-user-server #路由ID，全局唯一
           uri: http://im-user-server #目标微服务的请求地址和端口
           predicates:
             - Path=/user/**  #路由条件，采用path路由规则
           filters:
            - StripPrefix=1
-        - id: ws
-          uri: lb:ws://im-websocket-server:8002
+        - id: im-websocket-server
+          uri: lb:ws://im-websocket-server
           predicates:
-            - Path=/ws/**
+            - Path=/websocket/**
            #filters:
            #- StripPrefix=1
 

@@ -10,7 +10,7 @@ import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig implements WebMvcConfigurer{
+public class CorsConfig {
 	@Bean
     public FilterRegistrationBean corsFilter() {
         // 注册CORS过滤器
