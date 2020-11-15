@@ -54,7 +54,9 @@ spring:
 
 logging:
   level:
-    com.app.order.dao: debug
+    root: debug
+    sun: warn
+    org.apache: warn
 
 
 feign:
