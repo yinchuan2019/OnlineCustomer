@@ -2,9 +2,6 @@ package com.im.user.config;
 
 import javax.sql.DataSource;
 
-import com.im.user.exception.WebResponseExceptionTranslator;
-import com.im.user.integration.IntegrationAuthenticationFilter;
-import com.im.user.integration.IntegrationUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,15 +34,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
     private DataSource dataSource;
 	
-	@Autowired
-    private IntegrationUserDetailsService userDetailsService;
-	
-	@Autowired
-    private WebResponseExceptionTranslator webResponseExceptionTranslator;
-	
-	@Autowired
-    private IntegrationAuthenticationFilter integrationAuthenticationFilter;
-	
+
 	@Bean
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
@@ -64,9 +53,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints.tokenStore(tokenStore())
-        	.userDetailsService(userDetailsService)
         	.authenticationManager(authenticationManager)
-        	.exceptionTranslator(webResponseExceptionTranslator)
         	.tokenServices(defaultTokenServices());
 
     }
@@ -91,8 +78,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
     	security.allowFormAuthenticationForClients()
     		.tokenKeyAccess("permitAll()")
-    		.checkTokenAccess("isAuthenticated()")
-    		.addTokenEndpointAuthenticationFilter(integrationAuthenticationFilter);
+    		.checkTokenAccess("isAuthenticated()");
     }
 	
 }
